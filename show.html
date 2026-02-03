@@ -1,4 +1,13 @@
-<!doctype html>
+<!DOCTYPE html>
+<html>
+<body>
+<div id="codeDisplay"></div>
 <script>
-  document.write(new URLSearchParams(location.search).get("code") || "");
+  const code = new URLSearchParams(location.search).get("code") || "";
+  document.getElementById("codeDisplay").textContent = code;
+  if (code && navigator.clipboard) {
+    navigator.clipboard.writeText(code).catch(() => {});
+  }
 </script>
+</body>
+</html>
